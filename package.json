@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@paralleldrive/cuid2": "^2.2.2",
+    "dayjs": "^1.11.13",
     "drizzle-orm": "^0.33.0",
     "fastify": "^4.28.1",
     "lts": "^1.2.0",
@@ -18,7 +19,8 @@
     "typescript": "^5.6.2"
   },
   "scripts": {
-    "dev": "tsx --env-file .env watch src/http/server.ts"
+    "dev": "tsx --env-file .env watch src/http/server.ts",
+    "seed": "tsx --env-file .env src/db/seed.ts"
   },
   "keywords": [],
   "author": "",
