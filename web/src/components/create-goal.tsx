@@ -49,7 +49,6 @@ export function CreateGoal({ setOpen }: CreateGoalProps) {
 		desiredWeeklyFrequency,
 	}: CreateGoalSchema) {
 		try {
-			console.log(title, desiredWeeklyFrequency);
 			await createGoal({ title, desiredWeeklyFrequency });
 
 			reset();
@@ -59,7 +58,7 @@ export function CreateGoal({ setOpen }: CreateGoalProps) {
 
 			toast.success("Meta criada com sucesso !");
 			setOpen(false);
-		} catch {
+		} catch(error) {
 			toast.error("Erro ao criar a meta, tente novamente!");
 		}
 	}

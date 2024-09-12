@@ -16,7 +16,7 @@ export function App() {
 		staleTime: 1000 * 60, // 60 seconds
 	});
 
-	if (isLoading || !data) {
+	if (isLoading) {
     return (
       <div className="h-screen flex items-center justify-center">
         <Loader2 className="text-zinc-500 animate-spin size-10" />

@@ -47,11 +47,22 @@ Passo a passo para clonar e executar a aplicação na sua máquina:
 ```
 >Nota: Você pode utilizar o arquivo [.env.example](./server/.env.example) como exemplo
 
-5. Execute o Back-end da aplicação em modo desenvolvimento:
+5. Execute as migrations do banco:
+```bash
+  npm run db:migrate
+```
+>Nota: Caso não tenha um serviço PostgreSQL, veja a seção "Configuração com Docker"
+
+6. Execute a seed do banco (OPCIONAL):
+```bash
+  npm run db:seed
+```
+
+7. Execute o Back-end da aplicação em modo desenvolvimento:
 ```bash
   npm run dev:backend
 ```
-6. Execute o Front-end da aplicação em modo desenvolvimento:
+8. Execute o Front-end da aplicação em modo desenvolvimento:
 ```bash
   npm run dev:frontend
 ```
