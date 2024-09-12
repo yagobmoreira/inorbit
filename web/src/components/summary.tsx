@@ -1,4 +1,4 @@
-import { CheckCircle2, Plus } from "lucide-react";
+import { CheckCircle2, Heading1, Plus } from "lucide-react";
 import { Button } from "./ui/button";
 import { DialogTrigger } from "./ui/dialog";
 import { InOrbitIcon } from "./in-orbit-icon";
@@ -33,6 +33,7 @@ export function Summary() {
 					<InOrbitIcon />
 					<span className="text-lg font-semibold capitalize">{`${firstDayOfWeek} - ${lastDayOfWeek}`}</span>
 				</div>
+
 				<DialogTrigger asChild>
 					<Button size="sm">
 						<Plus className="size-4" />
@@ -60,41 +61,48 @@ export function Summary() {
 
 				<PendingGoals />
 
-				<div className="flex  flex-col gap-6">
-					<h2 className="text-xl font-medium">Sua semana</h2>
-					{Object.entries(data.goalsPerDay).map(([date, goals]) => {
-						const weekDay = dayjs(date).format("dddd");
-						const formattedDate = dayjs(date).format("D[ de ]MMMM");
+				{data.goalsPerDay ? (
+					<div className="flex  flex-col gap-6">
+						<h2 className="text-xl font-medium">Sua semana</h2>
 
-						return (
-							<div key={date} className="flex flex-col gap-4">
-								<h3 className="font-medium">
-									<span className="capitalize">{weekDay} </span>
-									<span className="text-zinc-400 text-xs">
-										({formattedDate})
-									</span>
-								</h3>
+						{Object.entries(data.goalsPerDay).map(([date, goals]) => {
+							const weekDay = dayjs(date).format("dddd");
+							const formattedDate = dayjs(date).format("D[ de ]MMMM");
 
-								<ul className="flex flex-col gap-3">
-									{goals.map((goal) => {
-										const time = dayjs(goal.completedAt).format("HH:mm");
+							return (
+								<div key={date} className="flex flex-col gap-4">
+									<h3 className="font-medium">
+										<span className="capitalize">{weekDay} </span>
+										<span className="text-zinc-400 text-xs">
+											({formattedDate})
+										</span>
+									</h3>
 
-										return (
-											<li key={goal.id} className="flex items-center gap-2">
-												<CheckCircle2 className="size-4 text-pink-500" />
-												<span className="text-sm  text-zinc-400">
-													Você completou{" "}
-													<span className="text-zinc-100">{goal.title}</span> às{" "}
-													<span className="text-zinc-100">{time}h</span>
-												</span>
-											</li>
-										);
-									})}
-								</ul>
-							</div>
-						);
-					})}
-				</div>
+									<ul className="flex flex-col gap-3">
+										{goals.map((goal) => {
+											const time = dayjs(goal.completedAt).format("HH:mm");
+
+											return (
+												<li key={goal.id} className="flex items-center gap-2">
+													<CheckCircle2 className="size-4 text-pink-500" />
+													<span className="text-sm  text-zinc-400">
+														Você completou{" "}
+														<span className="text-zinc-100">{goal.title}</span>{" "}
+														às <span className="text-zinc-100">{time}h</span>
+													</span>
+												</li>
+											);
+										})}
+									</ul>
+								</div>
+							);
+						})}
+					</div>
+				) : (
+					<h1 className="text-xl font-medium">
+						Você não completou nenhuma meta ainda !
+					</h1>
+				)}
 			</div>
 		</div>
 	);
