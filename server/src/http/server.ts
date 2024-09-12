@@ -4,10 +4,10 @@ import {
   validatorCompiler,
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
-import { createGoalRoute } from './src/http/routes/create-goal'
-import { createCompletionRoute } from './src/http/routes/create-completion'
-import { getPendingGoalsRoute } from './src/http/routes/get-pending-goals'
-import { getWeekSummaryRoute } from './src/http/routes/get-week-summary'
+import { createGoalRoute } from './routes/create-goal'
+import { createCompletionRoute } from './routes/create-completion'
+import { getPendingGoalsRoute } from './routes/get-pending-goals'
+import { getWeekSummaryRoute } from './routes/get-week-summary'
 import fastifyCors from '@fastify/cors'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
